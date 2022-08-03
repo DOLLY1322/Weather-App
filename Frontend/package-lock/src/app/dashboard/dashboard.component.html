@@ -1,0 +1,114 @@
+<section class="vh-1000" style="background-image: url('https://wallpapercave.com/wp/wp2035103.jpg');">
+
+  <form class="d-flex nav-item  ms-5" role="search" #form="ngForm">
+    <input style="width:35rem;" class="form-control me-2 ms-5" type="search" [(ngModel)]="cityName" placeholder="Search"
+      aria-label="Search" name="cityName">
+
+    <button style="color: white;" (click)="searchValue()" position:fixed class="btn btn-outline-dark">Search</button>
+  </form>
+
+  <div *ngIf="cityWeather">
+    <div class="container py-5 h-100">
+
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-md-6 col-lg-6 col-xl-4">
+
+          <div class="card" style="color: #4B515D; border-radius: 35px;">
+            <div class="card-body p-4">
+
+              <div class="d-flex">
+                <h4 class="flex-grow-1">{{cityWeather.name}}</h4>
+                <h4>Today's Weather</h4>
+              </div>
+
+              <div class="d-flex flex-column text-center mt-5 mb-4">
+                <h6 class="display-4 mb-0 font-weight-bold" style="color: #1C2331; font-size: 500;font-weight: 500;"> {{cityWeather.temperature?.temp}}°C
+                </h6>
+                <span class="small" style="color: #868B94">
+                  <h4>{{cityWeather.weather?.mainInfo}}</h4>
+                </span>
+              </div>
+
+              <div class="d-flex align-items-center">
+                <div class="flex-grow-1" style="font-size: 1rem;">
+                  <div><i class="fas fa-wind fa-fw" style="color: #070707;"></i> <span class="ms-1">
+                      {{cityWeather.temperature?.feelsLike}} km/hr
+                    </span></div>
+                  <div><i class="fas fa-tint fa-fw" style="color: #070707;"></i> <span class="ms-1">
+                      {{cityWeather.temperature?.humidity}}% </span>
+                  </div>
+                  <div><i class="fas fa-sun fa-fw" style="color: #070707;"></i> <span class="ms-1">
+                      {{cityWeather.temperature?.pressure}} mb </span>
+                  </div>
+
+                  <div><i style="color: black; font-size: 50px;" id="favourite" (click)="addToWatchList()" class="material-icons" 
+                     >favorite</i>
+                  </div>
+                </div>
+                <div *ngIf="cityWeather.weather?.mainInfo == 'Rain'">
+                  <img src="../../assets/icons8-light-rain.gif"
+                    width="100px">
+                </div>
+
+                <div *ngIf="cityWeather.weather?.mainInfo == 'Clouds'">
+                  <img src="../../assets/icons8-cloud-lightning.gif"
+                    width="100px">
+                </div>
+
+                <div *ngIf="cityWeather.weather?.mainInfo == 'Clear'">
+                  <img src="../../assets/icons8-summer.gif"
+                    width="100px">
+                </div>
+
+                <div *ngIf="cityWeather.weather?.mainInfo == 'Snow'">
+                  <img src="../../assets/icons8-snow-storm.gif"
+                    width="100px">
+                </div>
+
+                <div *ngIf="cityWeather.weather?.mainInfo == 'Haze'">
+                  <img src="../../assets/icons8-haze.gif"
+                    width="100px">
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+  <!-- second card box -->
+
+        <div class="col-md-8 col-lg-6 col-xl-4">
+
+          <div class="card" style="color: #4B515D; border-radius: 35px;">
+            <div class="card-body p-4">
+
+
+              <div class="d-flex flex-column text-center">
+                <h6 class="display-4 mb-0 font-weight-bold" style="color: #0f0a06;font-weight: 400;"> {{weekday | showWeekDay}} </h6>
+                <span class="small" style="color: black; font-size: 25px;">🌏 {{cityWeather.country}}</span>
+                <span class="small" style="color: black; font-size: 25px;">Temp Minimum:{{cityWeather.temperature?.tempMin}}°C</span>
+                <span class="small" style="color: black; font-size: 25px;">Temp Maximum:{{cityWeather.temperature?.tempMax}}°C</span>
+                <span class="small" style="color: black; font-size: 25px;">Latitude:{{cityWeather.coord?.lat}}</span>
+                <span class="small" style="color: black; font-size: 25px;">Longitude:{{cityWeather.coord?.lon}}</span>
+              </div>
+
+             
+              <div>
+                <img src="../../assets/icons8-barometer.gif" width="150px">
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  
+  </div>
+
+</section>
+
+<app-footer></app-footer>
+
+

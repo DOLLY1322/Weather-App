@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg b">
+  <div class="container-fluid">
+    <a class="navbar-brand"><img
+        src="https://icon-library.com/images/android-weather-icon/android-weather-icon-24.jpg" alt="" height="40px"
+        width="40px"></a>
+
+    <button  class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span  class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li *ngIf="isLoggedIn()" class="nav-item ms-5">
+          <a style="color: white;" class="nav-link active" aria-current="page" routerLink="/dashboard">Home</a>
+        </li>
+        <li *ngIf="isLoggedIn()" class="nav-item ms-5">
+
+          <i style="color: white;" class="nav-link" routerLink='/listCities' class="material-icons"
+            id="pointer">favorite</i>
+          
+
+        </li>
+
+        <li   *ngIf="isLoggedIn()" class="nav-item ms-5">
+
+          <a style="color: white;" class="nav-link active" routerLink="/about" aria-current="page" >Contact Us</a>
+        
+
+
+        </li>
+
+
+
+        <li class="nav-item ms-5">
+          <a *ngIf="isLoggedIn()" (click)="logout()" style=" color: white;" class="nav-link " id="logout">Logout</a>
+        </li>
+
+        
+
+
+      </ul>
+
+
+    </div>
+  </div>
+</nav>
+
+
+<router-outlet></router-outlet>
